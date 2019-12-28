@@ -1,3 +1,5 @@
+const dataStore = [];
+
 const checkError = (...arg) => {
     for (let i = 0; i < arg.length; i++) {
         if (typeof arg[i] != "number") {
@@ -31,15 +33,18 @@ const calcTrapezoidS = (a, b, h) => {
 const getArea = (str, a, b, h) => {
     switch (str) {
         case 'circle':
+            dataStore.push('circle');
             if (typeof b === 'undefined') return calcEllipseS(a);
             else return calcAllEllipse(a, b);
             break;
 
         case 'rect':
+            dataStore.push('rect');
             return calcRectS(a, b);
             break;
 
         case 'trapezoid':
+            dataStore.push('trapezoid');
             return calcTrapezoidS(a, b, h);
             break;
 
@@ -49,4 +54,13 @@ const getArea = (str, a, b, h) => {
     }
 }
 
-console.log(getArea('circle', 2, 5));
+function printExecutionSequence() {
+    console.log(dataStore);
+}
+
+getArea('circle', 2, 5);
+getArea('rect', 1, 2);
+getArea('circle', 1);
+getArea('circle', 1);
+getArea('trapezoid', 1, 2, 3);
+printExecutionSequence();
