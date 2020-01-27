@@ -80,7 +80,3 @@ const todo = new Todo();
 todo.show('all');
 todo.show('todos');
 todo.show('blahblah');
-
-// $ nodejs todos.js
-// 현재상태 :  todo: 1개, doing:2개, done:4개
-// todo리스트 :  총3건 : ' 자바스크립트 공부하기' , 'iOS공부하기'
